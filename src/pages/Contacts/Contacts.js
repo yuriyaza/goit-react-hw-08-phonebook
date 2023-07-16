@@ -3,14 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
 import { fetchContacts } from 'redux/phonebook/api';
-import { ContactAdd } from 'components/ContactAdd/ContacAdd';
+import { ContactAdd } from 'components/ContactAdd/ContactAdd';
 import { ContactFilter } from 'components/ContactFilter/ContactFilter';
 import { ContactList } from 'components/ContactList/ContactList';
 import { ContactEmpty } from 'components/ContactEmpty/ContactEmpty';
+import { Spinner } from 'components/Spinner/Spinner';
 import css from './Contacts.module.css';
 
 export const Contacts = () => {
-  const { contacts, error } = useSelector(state => state.phoneBook);
+  const { contacts, error, isLoading } = useSelector(state => state.phoneBook);
   const isContactsEmpty = contacts.length === 0;
   const dispatch = useDispatch();
 
@@ -40,6 +41,8 @@ export const Contacts = () => {
           <ContactList />
         </>
       )}
+
+      {isLoading && <Spinner />}
     </div>
   );
 };

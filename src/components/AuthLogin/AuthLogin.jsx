@@ -1,12 +1,20 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { loginUser } from 'redux/auth/api';
 import css from './AuthLogin.module.css';
 
 export const AuthLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const onFormSubmit = e => {
     e.preventDefault();
+
+    dispatch(loginUser());
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -40,7 +48,8 @@ export const AuthLogin = () => {
 
       <button
         className={css.button}
-        type='submit'>
+        type='button'
+        onClick={onFormSubmit}>
         Login
       </button>
     </form>

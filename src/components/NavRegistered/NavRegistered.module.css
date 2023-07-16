@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.name {
+  margin-right: 15px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.button {
+  font-size: 16px;
+  margin-right: 5px;
+  padding: 5px 20px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+}

@@ -32,7 +32,7 @@ export const phoneBook = createSlice({
         state.isLoading = false;
       })
 
-      .addMatcher(isAnyOf(fetchContacts.pending, addContact.pending, deleteContact.pending), (state, action) => {
+      .addMatcher(isAnyOf(fetchContacts.pending, addContact.pending, deleteContact.pending), (state, _) => {
         state.error = null;
         state.isLoading = true;
       })

@@ -1,0 +1,7 @@
+.navItem {
+  display: inline-block;
+  padding: 15px 5px;
+  font-size: 18px;
+  text-decoration: none;
+  color: #303030;
+}

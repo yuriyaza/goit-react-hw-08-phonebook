@@ -1,13 +1,22 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { createUser } from 'redux/auth/api';
 import css from './AuthRegister.module.css';
 
 export const AuthRegister = () => {
-  const [login, setLogin] = useState('');
+  const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const onFormSubmit = e => {
     e.preventDefault();
+
+    dispatch(createUser());
+    setUser('');
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -19,12 +28,12 @@ export const AuthRegister = () => {
           <span className={css.label}>Name</span>
           <input
             className={css.input}
-            name='name'
+            name='user'
             type='text'
             maxLength={40}
             required
-            value={login}
-            onChange={e => setLogin(e.target.value)}></input>
+            value={user}
+            onChange={e => setUser(e.target.value)}></input>
         </label>
         <label>
           <span className={css.label}>E-mail</span>
@@ -52,7 +61,8 @@ export const AuthRegister = () => {
 
       <button
         className={css.button}
-        type='submit'>
+        type='button'
+        onClick={onFormSubmit}>
         Register
       </button>
     </form>

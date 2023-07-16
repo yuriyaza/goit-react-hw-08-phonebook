@@ -24,7 +24,7 @@ export const ContactAdd = () => {
 
     const existingContacts = contacts.map(contact => contact.name.toLowerCase());
     if (existingContacts.includes(newContact.name.toLowerCase())) {
-      Notify.failure(`${newContact.name} is already exist in contacts`);
+      Notify.failure(`${newContact.name} is already exist in your contacts`);
       return;
     }
 

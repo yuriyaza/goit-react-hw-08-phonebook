@@ -1,7 +1,6 @@
 .contactCard {
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 10px 5px 10px 15px;
 
   background-color: #f3f3f3;
@@ -31,8 +30,11 @@
 }
 
 .userName {
+  max-width: 250px;
+  overflow: hidden;
   font-size: 20px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .deleteButton {

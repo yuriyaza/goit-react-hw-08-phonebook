@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
+import { fetchContacts } from 'redux/phonebook/api';
 import { ContactAdd } from 'components/ContactAdd/ContacAdd';
 import { ContactFilter } from 'components/ContactFilter/ContactFilter';
 import { ContactList } from 'components/ContactList/ContactList';
@@ -11,6 +12,16 @@ import css from './Contacts.module.css';
 export const Contacts = () => {
   const { contacts, error } = useSelector(state => state.phoneBook);
   const isContactsEmpty = contacts.length === 0;
+  const dispatch = useDispatch();
+
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   useEffect(() => {
     if (error) Notify.failure(error);

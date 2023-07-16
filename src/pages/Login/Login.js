@@ -1,5 +1,9 @@
+import { AuthLogin } from 'components/AuthLogin/AuthLogin';
+
 export const Login = () => {
   return (
-    <div>Login page</div>
-  )
-}
+    <>
+      <AuthLogin />
+    </>
+  );
+};

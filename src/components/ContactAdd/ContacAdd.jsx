@@ -13,21 +13,6 @@ export const ContactAdd = () => {
   const contacts = useSelector(state => state.phoneBook.contacts);
   const dispatch = useDispatch();
 
-  const onInputChange = e => {
-    const { name: fieldName, value: fieldValue } = e.target;
-
-    switch (fieldName) {
-      case 'name':
-        setName(fieldValue);
-        break;
-      case 'number':
-        setNumber(fieldValue);
-        break;
-      default:
-        return undefined;
-    }
-  };
-
   const onFormSubmit = e => {
     e.preventDefault();
 
@@ -49,20 +34,22 @@ export const ContactAdd = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={onFormSubmit}>
+    <form
+      className={css.form}
+      onSubmit={onFormSubmit}>
       <div className={css.inputWrapper}>
         <label>
           <span className={css.label}>Name</span>
           <input
             className={css.input}
-            type='text'
             name='name'
+            type='text'
             maxLength={40}
             pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             value={name}
-            onChange={onInputChange}
+            onChange={e => setName(e.target.value)}
           />
         </label>
 
@@ -70,19 +57,21 @@ export const ContactAdd = () => {
           <span className={css.label}>Number</span>
           <input
             className={css.input}
-            type='tel'
             name='number'
+            type='tel'
             maxLength={20}
             pattern='\+?\d{1,20}?[\-.\s]?\(?\d{0,20}?\)?[\-.\s]?\d{0,20}[\-.\s]?\d{0,20}[\-.\s]?\d{0,20}'
             title='Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
             required
             value={number}
-            onChange={onInputChange}
+            onChange={e => setNumber(e.target.value)}
           />
         </label>
       </div>
 
-      <button className={css.button} type='submit'>
+      <button
+        className={css.button}
+        type='submit'>
         Add contact
       </button>
     </form>

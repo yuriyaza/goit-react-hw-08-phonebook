@@ -1,13 +1,25 @@
 .container {
-  width: 425px;
+  width: 600px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
-.title {
-  padding: 20px 0;
+.header {
+  margin-bottom: 30px;
+  border-bottom: 2px solid black;
 }
 
-.subtitle {
-  padding: 10px 0;
+.navList {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
+
+.navItem {
+  display: inline-block;
+  padding: 15px 5px;
+  font-size: 18px;
+  text-decoration: none;
+  color: #303030;
+}
+
+

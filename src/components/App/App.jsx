@@ -1,65 +1,41 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { phoneBook } from 'redux/phonebook/slice';
-import { Notify } from 'notiflix';
+import { Routes, Route, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import { fetchContacts, addContact, deleteContact } from 'redux/phonebook/api';
-
-import { ContactForm } from 'components/ContactForm/ContactForm';
-import { ContactList } from 'components/ContactList/ContactList';
-import { Filter } from 'components/Filter/Filter';
+import { Home } from 'pages/Home/Home';
+import { Contacts } from 'pages/Contacts/Contacts';
+import { Login } from 'pages/Login/Login';
+import { Register } from 'pages/Register/Register';
 import { Spinner } from 'components/Spinner/Spinner';
 import css from './App.module.css';
 
-import { Header } from 'components/Header/Header';
-
-Notify.init({ showOnlyTheLastOne: true, clickToClose: true });
-
 export const App = () => {
-  const { contacts, filter, error, isLoading } = useSelector(state => state.phoneBook);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (error) Notify.failure(error);
-  }, [error]);
-
-  const onAddContact = newContact => {
-    const nameList = contacts.map(contact => contact.name.toLowerCase());
-
-    if (nameList.includes(newContact.name.toLowerCase())) {
-      Notify.failure(`${newContact.name} is already in contacts`);
-      return;
-    }
-    dispatch(addContact(newContact));
-  };
-
-  const onDeleteContact = id => {
-    dispatch(deleteContact(id));
-  };
-
-  const onSetFilter = filter => {
-    dispatch(phoneBook.actions.setFilter(filter));
-  };
-
-  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+  const isLoading = useSelector(state => state.phoneBook.isLoading);
 
   return (
     <div className={css.container}>
-      <Header />
+      <header className={css.header}>
+        <nav className={css.navList}>
+          <div>
+            <NavLink to='/' className={css.navItem}>Home</NavLink>
+            <NavLink to='/contacts' className={css.navItem}>Contacts</NavLink>
+          </div>
+          <div>
+            <NavLink to='/login' className={css.navItem}>Login</NavLink>
+            <NavLink to='/register' className={css.navItem}>Register</NavLink>
+          </div>
+        </nav>
+      </header>
 
-      <h1 className={css.title}>Phonebook</h1>
-      <ContactForm onAddContact={onAddContact} />
+      <main>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/contacts' element={<Contacts />}></Route>
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+        </Routes>
 
-      <h2 className={css.subtitle}>Contacts</h2>
-      <Filter filter={filter} setFilter={onSetFilter} />
-
-      <ContactList contacts={filteredContacts} onDeleteContact={onDeleteContact} />
-
-      {isLoading && <Spinner />}
+        {isLoading && <Spinner />}
+      </main>
     </div>
   );
 };

@@ -38,3 +38,8 @@ ul {
 button {
   cursor: pointer;
 }
+
+a.active {
+  color: black;
+  font-weight: 700;
+}

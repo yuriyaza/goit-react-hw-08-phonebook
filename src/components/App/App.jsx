@@ -1,5 +1,6 @@
 import { Routes, Route, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Notify } from 'notiflix';
 
 import { Home } from 'pages/Home/Home';
 import { Contacts } from 'pages/Contacts/Contacts';
@@ -7,6 +8,8 @@ import { Login } from 'pages/Login/Login';
 import { Register } from 'pages/Register/Register';
 import { Spinner } from 'components/Spinner/Spinner';
 import css from './App.module.css';
+
+Notify.init({ showOnlyTheLastOne: true, clickToClose: true });
 
 export const App = () => {
   const isLoading = useSelector(state => state.phoneBook.isLoading);

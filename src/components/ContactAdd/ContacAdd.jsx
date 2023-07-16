@@ -1,10 +1,17 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import css from './ContactForm.module.css';
+import { Notify } from 'notiflix';
 
-export const ContactForm = ({ onAddContact }) => {
+import { addContact } from 'redux/phonebook/api';
+import css from './ContactAdd.module.css';
+
+export const ContactAdd = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const contacts = useSelector(state => state.phoneBook.contacts);
+  const dispatch = useDispatch();
 
   const onInputChange = e => {
     const { name: fieldName, value: fieldValue } = e.target;
@@ -30,7 +37,13 @@ export const ContactForm = ({ onAddContact }) => {
       number,
     };
 
-    onAddContact(newContact);
+    const existingContacts = contacts.map(contact => contact.name.toLowerCase());
+    if (existingContacts.includes(newContact.name.toLowerCase())) {
+      Notify.failure(`${newContact.name} is already exist in contacts`);
+      return;
+    }
+
+    dispatch(addContact(newContact));
     setName('');
     setNumber('');
   };

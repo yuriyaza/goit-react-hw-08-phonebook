@@ -1,13 +1,28 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { FaUserCircle } from 'react-icons/fa';
 import { BsTrash } from 'react-icons/bs';
 
+import { fetchContacts, deleteContact } from 'redux/phonebook/api';
 import { getRandomColor } from 'js/getRandomColor';
 import css from './ContactList.module.css';
 
-export const ContactList = ({ contacts, onDeleteContact }) => {
+export const ContactList = () => {
+  const { contacts, filter } = useSelector(state => state.phoneBook);
+  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  const onContactDelete = id => {
+    dispatch(deleteContact(id));
+  };
+
   return (
     <ul>
-      {contacts.map(({ id, name, number }) => {
+      {filteredContacts.map(({ id, name, number }) => {
         return (
           <li className={css.contactCard} key={id}>
             <div className={css.userIcon} style={{ color: getRandomColor() }}>
@@ -19,7 +34,7 @@ export const ContactList = ({ contacts, onDeleteContact }) => {
               <div>{number}</div>
             </div>
 
-            <button className={css.deleteButton} type='button' onClick={() => onDeleteContact(id)}>
+            <button className={css.deleteButton} type='button' onClick={() => onContactDelete(id)}>
               <span className={css.deleteIcon}>
                 <BsTrash />
               </span>

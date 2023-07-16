@@ -36,6 +36,7 @@ export const phoneBook = createSlice({
         state.error = null;
         state.isLoading = true;
       })
+      
       .addMatcher(isAnyOf(fetchContacts.rejected, addContact.rejected, deleteContact.rejected), (state, action) => {
         state.error = action.payload;
         state.isLoading = false;

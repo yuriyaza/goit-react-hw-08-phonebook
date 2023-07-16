@@ -11,6 +11,8 @@ import { Filter } from 'components/Filter/Filter';
 import { Spinner } from 'components/Spinner/Spinner';
 import css from './App.module.css';
 
+import { Header } from 'components/Header/Header';
+
 Notify.init({ showOnlyTheLastOne: true, clickToClose: true });
 
 export const App = () => {
@@ -47,6 +49,8 @@ export const App = () => {
 
   return (
     <div className={css.container}>
+      <Header />
+
       <h1 className={css.title}>Phonebook</h1>
       <ContactForm onAddContact={onAddContact} />
 

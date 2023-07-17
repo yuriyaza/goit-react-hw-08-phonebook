@@ -7,8 +7,8 @@ export const phoneBook = createSlice({
   initialState: {
     contacts: [],
     filter: '',
-    error: null,
     isLoading: false,
+    error: null,
   },
 
   reducers: {

@@ -1,7 +1,7 @@
 import { FaRegAddressBook } from 'react-icons/fa';
-import css from './ContactEmpty.module.css';
+import css from './ContactsEmpty.module.css';
 
-export const ContactEmpty = () => {
+export const ContactsEmpty = () => {
   return (
     <div className={css.wrapper}>
       <FaRegAddressBook className={css.icon} size={48}/>

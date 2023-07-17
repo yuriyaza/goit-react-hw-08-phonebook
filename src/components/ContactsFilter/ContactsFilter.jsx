@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { phoneBook } from 'redux/phonebook/slice';
-import css from './ContactFilter.module.css';
+import css from './ContactsFilter.module.css';
 
-export const ContactFilter = () => {
+export const ContactsFilter = () => {
   const filter = useSelector(state => state.phoneBook.filter);
   const dispatch = useDispatch();
 

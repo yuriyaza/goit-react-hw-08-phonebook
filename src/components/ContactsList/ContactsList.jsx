@@ -4,9 +4,9 @@ import { BsTrash } from 'react-icons/bs';
 
 import { deleteContact } from 'redux/phonebook/api';
 import { getRandomColor } from 'js/getRandomColor';
-import css from './ContactList.module.css';
+import css from './ContactsList.module.css';
 
-export const ContactList = () => {
+export const ContactsList = () => {
   const { contacts, filter } = useSelector(state => state.phoneBook);
   const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   const dispatch = useDispatch();

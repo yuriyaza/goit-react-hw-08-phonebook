@@ -44,3 +44,12 @@ a.active {
   color: #000000;
 }
 
+a:hover,
+a:focus {
+ color: #808080; 
+}
+
+a.active:hover,
+a.active:focus {
+ color: #000000; 
+}

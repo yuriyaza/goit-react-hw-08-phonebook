@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
 import { fetchContacts } from 'redux/phonebook/api';
-import { ContactAdd } from 'components/ContactAdd/ContactAdd';
-import { ContactFilter } from 'components/ContactFilter/ContactFilter';
-import { ContactList } from 'components/ContactList/ContactList';
-import { ContactEmpty } from 'components/ContactEmpty/ContactEmpty';
+import { ContactsAdd } from 'components/ContactsAdd/ContactsAdd';
+import { ContactsFilter } from 'components/ContactsFilter/ContactsFilter';
+import { ContactsList } from 'components/ContactsList/ContactsList';
+import { ContactsEmpty } from 'components/ContactsEmpty/ContactsEmpty';
 import { Spinner } from 'components/Spinner/Spinner';
 import css from './Contacts.module.css';
 
@@ -30,15 +30,15 @@ export const Contacts = () => {
 
   return (
     <div className={css.wrapper}>
-      <ContactAdd />
+      <ContactsAdd />
 
       {isContactsEmpty ? (
-        <ContactEmpty />
+        <ContactsEmpty />
       ) : (
         <>
           <h2 className={css.subtitle}>Your contacts</h2>
-          <ContactFilter />
-          <ContactList />
+          <ContactsFilter />
+          <ContactsList />
         </>
       )}
 

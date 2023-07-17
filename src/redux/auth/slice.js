@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { createUser, loginUser, logoutUser } from './api';
+import { createUser, loginUser, logoutUser, fetchUser } from './api';
 import storage from 'redux-persist/lib/storage';
 import persistReducer from 'redux-persist/es/persistReducer';
 
@@ -9,10 +9,10 @@ export const auth = createSlice({
   initialState: {
     user: '',
     email: '',
-    token: '',
-    error: null,
+    token: undefined,
     isLoggedIn: false,
     isLoading: false,
+    error: null,
   },
 
   extraReducers: builder => {
@@ -28,17 +28,24 @@ export const auth = createSlice({
       .addMatcher(isAnyOf(logoutUser.fulfilled), (state, _) => {
         state.user = '';
         state.email = '';
-        state.token = '';
+        state.token = undefined;
         state.isLoggedIn = false;
         state.isLoading = false;
       })
 
-      .addMatcher(isAnyOf(createUser.pending, loginUser.pending, logoutUser.pending), (state, _) => {
+      .addMatcher(isAnyOf(fetchUser.fulfilled), (state, action) => {
+        state.user = action.payload.name;
+        state.email = action.payload.email;
+        state.isLoggedIn = true;
+        state.isLoading = false;
+      })
+
+      .addMatcher(isAnyOf(createUser.pending, loginUser.pending, logoutUser.pending, fetchUser.fulfilled), (state, _) => {
         state.error = null;
         state.isLoading = true;
       })
 
-      .addMatcher(isAnyOf(createUser.rejected, loginUser.rejected, logoutUser.rejected), (state, action) => {
+      .addMatcher(isAnyOf(createUser.rejected, loginUser.rejected, logoutUser.rejected, fetchUser.fulfilled), (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       });

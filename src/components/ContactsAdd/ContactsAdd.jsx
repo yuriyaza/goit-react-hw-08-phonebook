@@ -4,9 +4,9 @@ import { v4 as uuid } from 'uuid';
 import { Notify } from 'notiflix';
 
 import { addContact } from 'redux/phonebook/api';
-import css from './ContactAdd.module.css';
+import css from './ContactsAdd.module.css';
 
-export const ContactAdd = () => {
+export const ContactsAdd = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 

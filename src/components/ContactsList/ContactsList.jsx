@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FaUserCircle } from 'react-icons/fa';
 import { BsTrash } from 'react-icons/bs';
 
-import { deleteContact } from 'redux/phonebook/api';
+import { deleteContact } from 'redux/phonebook/phonebookApi';
 import { getRandomColor } from 'js/getRandomColor';
 import css from './ContactsList.module.css';
 

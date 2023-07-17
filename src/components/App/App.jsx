@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
-import { fetchUser } from 'redux/auth/api';
+import { fetchUser } from 'redux/auth/authApi';
 import { Home } from 'pages/Home/Home';
 import { NavMain } from 'components/NavMain/NavMain';
 import { NavUnregistered } from 'components/NavUnregistered/NavUnregistered';

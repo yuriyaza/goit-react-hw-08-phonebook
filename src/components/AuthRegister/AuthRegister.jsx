@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { createUser } from 'redux/auth/api';
+import { createUser } from 'redux/auth/authApi';
 import css from './AuthRegister.module.css';
 
 export const AuthRegister = () => {

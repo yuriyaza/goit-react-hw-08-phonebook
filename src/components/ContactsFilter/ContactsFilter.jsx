@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { phoneBook } from 'redux/phonebook/slice';
+import { phoneBook } from 'redux/phonebook/phonebookSlice';
 import css from './ContactsFilter.module.css';
 
 export const ContactsFilter = () => {

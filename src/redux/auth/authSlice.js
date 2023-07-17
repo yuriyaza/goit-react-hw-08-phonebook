@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { createUser, loginUser, logoutUser, fetchUser } from './api';
+import { createUser, loginUser, logoutUser, fetchUser } from './authApi';
 import storage from 'redux-persist/lib/storage';
 import persistReducer from 'redux-persist/es/persistReducer';
 

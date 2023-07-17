@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { FaUserCircle } from 'react-icons/fa';
 
-import { logoutUser } from 'redux/auth/api';
+import { logoutUser } from 'redux/auth/authApi';
 import css from './NavRegistered.module.css';
 
 export const NavRegistered = () => {

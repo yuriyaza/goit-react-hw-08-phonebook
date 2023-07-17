@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
-import { fetchContacts } from 'redux/phonebook/api';
+import { fetchContacts } from 'redux/phonebook/phonebookApi';
 import { ContactsAdd } from 'components/ContactsAdd/ContactsAdd';
 import { ContactsFilter } from 'components/ContactsFilter/ContactsFilter';
 import { ContactsList } from 'components/ContactsList/ContactsList';

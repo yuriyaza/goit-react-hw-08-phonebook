@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { Notify } from 'notiflix';
 
-import { addContact } from 'redux/phonebook/api';
+import { addContact } from 'redux/phonebook/phonebookApi';
 import css from './ContactsAdd.module.css';
 
 export const ContactsAdd = () => {

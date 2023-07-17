@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { persistStore } from 'redux-persist';
 
-import { persistedAuth } from './auth/slice';
-import { phoneBook } from './phonebook/slice';
+import { persistedAuth } from './auth/authSlice';
+import { phoneBook } from './phonebook/phonebookSlice';
 
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 

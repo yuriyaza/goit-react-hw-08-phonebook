@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { loginUser } from 'redux/auth/api';
+import { loginUser } from 'redux/auth/authApi';
 import css from './AuthLogin.module.css';
 
 export const AuthLogin = () => {

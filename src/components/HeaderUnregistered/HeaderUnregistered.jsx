@@ -4,7 +4,6 @@ import css from './HeaderUnregistered.module.css';
 export const HeaderUnregistered = () => {
   return (
     <div className={css.wrapper}>
-
       <NavLink
         to='/login'
         className={css.navigation}>
@@ -16,7 +15,6 @@ export const HeaderUnregistered = () => {
         className={css.navigation}>
         Register
       </NavLink>
-   
     </div>
   );
 };

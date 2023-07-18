@@ -7,7 +7,6 @@ export const HeaderNavigation = () => {
 
   return (
     <div className={css.wrapper}>
-
       <NavLink
         to='/'
         className={css.navigation}>
@@ -20,7 +19,6 @@ export const HeaderNavigation = () => {
           className={css.navigation}>
           Contacts
         </NavLink>
-
       )}
     </div>
   );

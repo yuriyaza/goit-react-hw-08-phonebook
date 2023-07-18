@@ -10,7 +10,6 @@ export const HeaderRegistered = () => {
 
   return (
     <div className={css.wrapper}>
-      
       <FaUserCircle className={css.icon} color='#900000' />
       <span className={css.name}>{user}</span>
       
@@ -20,7 +19,6 @@ export const HeaderRegistered = () => {
         onClick={() => { dispatch(logoutUser()); }}>
         Logout
       </button>
-
     </div>
   );
 };

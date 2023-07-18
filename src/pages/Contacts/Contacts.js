@@ -1,4 +1,3 @@
-// import { useEffect, useRef } from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -16,14 +15,7 @@ export const Contacts = () => {
   const isContactsEmpty = contacts.length === 0;
   const dispatch = useDispatch();
 
-  // const isFirstRender = useRef(true);
-
   useEffect(() => {
-    // if (isFirstRender.current) {
-    //   isFirstRender.current = false;
-    //   return;
-    // }
-
     dispatch(fetchContacts());
   }, [dispatch]);
 

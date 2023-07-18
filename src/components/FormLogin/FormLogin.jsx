@@ -40,8 +40,8 @@ export const FormLogin = () => {
 
   return (
     <form className={css.form} onSubmit={onFormSubmit}>
-
       <div className={css.inputWrapper}>
+        
         <label>
           <span className={css.label}>E-mail</span>
           <input
@@ -72,7 +72,6 @@ export const FormLogin = () => {
         type='submit'>
         Login
       </button>
-
     </form>
   );
 };

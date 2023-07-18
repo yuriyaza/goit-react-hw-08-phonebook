@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-// import { useEffect, useRef } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
@@ -23,14 +22,7 @@ export const App = () => {
   const { token, isLoggedIn, isAuthComplete } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
-  // const isFirstRender = useRef(true);
-
   useEffect(() => {
-    // if (isFirstRender.current) {
-    //   isFirstRender.current = false;
-    //   return;
-    // }
-
     if (token) {
       dispatch(fetchUser(token));
     } else {

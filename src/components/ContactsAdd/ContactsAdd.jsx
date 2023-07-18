@@ -75,7 +75,6 @@ export const ContactsAdd = () => {
         type='submit'>
         Add contact
       </button>
-      
     </form>
   );
 };

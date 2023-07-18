@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
+import { auth } from 'redux/auth/authSlice';
 import { fetchUser } from 'redux/auth/authApi';
-import { RouteRules } from 'components/RouteRules/RouteRules';
 
 import { Home } from 'pages/Home/Home';
 import { HeaderNavigation } from 'components/HeaderNavigation/HeaderNavigation';
@@ -13,13 +13,8 @@ import { HeaderUnregistered } from 'components/HeaderUnregistered/HeaderUnregist
 import { Contacts } from 'pages/Contacts/Contacts';
 import { Login } from 'pages/Login/Login';
 import { Register } from 'pages/Register/Register';
+import { RouteRules } from 'components/RouteRules/RouteRules';
 import css from './App.module.css';
-
-import { useRef } from 'react';
-import { fetchContacts } from 'redux/phonebook/phonebookApi';
-import { Spinner } from 'components/Spinner/Spinner';
-
-import { auth } from 'redux/auth/authSlice';
 
 Notify.init({ showOnlyTheLastOne: true, clickToClose: true });
 
@@ -98,6 +93,7 @@ export const App = () => {
                   />
                 }
               />
+              
             </Routes>
           </main>
         </div>

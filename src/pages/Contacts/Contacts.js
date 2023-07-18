@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Notify } from 'notiflix';
 
 import { fetchContacts } from 'redux/phonebook/phonebookApi';
+
 import { ContactsAdd } from 'components/ContactsAdd/ContactsAdd';
 import { ContactsFilter } from 'components/ContactsFilter/ContactsFilter';
 import { ContactsList } from 'components/ContactsList/ContactsList';
@@ -11,7 +11,7 @@ import { Spinner } from 'components/Spinner/Spinner';
 import css from './Contacts.module.css';
 
 export const Contacts = () => {
-  const { contacts, error, isLoading, isFetchComplete } = useSelector(state => state.phoneBook);
+  const { contacts, isLoading, isFetchComplete } = useSelector(state => state.phoneBook);
   const isContactsEmpty = contacts.length === 0;
   const dispatch = useDispatch();
 
@@ -22,12 +22,9 @@ export const Contacts = () => {
       isFirstRender.current = false;
       return;
     }
+
     dispatch(fetchContacts());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (error) Notify.failure(error);
-  }, [error]);
 
   return (
     <>
@@ -36,9 +33,7 @@ export const Contacts = () => {
 
         {isFetchComplete && (
           <>
-            {isContactsEmpty ? (
-              <ContactsEmpty />
-            ) : (
+            {isContactsEmpty ? ( <ContactsEmpty /> ) : (
               <>
                 <h2 className={css.subtitle}>Your contacts</h2>
                 <ContactsFilter />
@@ -47,6 +42,7 @@ export const Contacts = () => {
             )}
           </>
         )}
+
       </div>
       {isLoading && <Spinner />}
     </>

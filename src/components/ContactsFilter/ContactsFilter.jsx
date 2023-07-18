@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { phoneBook } from 'redux/phonebook/phonebookSlice';
 import css from './ContactsFilter.module.css';
 

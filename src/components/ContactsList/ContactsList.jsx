@@ -11,16 +11,15 @@ export const ContactsList = () => {
   const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   const dispatch = useDispatch();
 
-  const onContactDelete = id => {
-    dispatch(deleteContact(id));
-  };
-
   return (
     <ul>
       {filteredContacts.map(({ id, name, number }) => {
         return (
           <li className={css.contactCard} key={id}>
-            <div className={css.userIcon} style={{ color: getRandomColor() }}>
+
+            <div
+              className={css.userIcon}
+              style={{ color: getRandomColor() }}>
               <FaUserCircle />
             </div>
 
@@ -29,11 +28,15 @@ export const ContactsList = () => {
               <div>{number}</div>
             </div>
 
-            <button className={css.deleteButton} type='button' onClick={() => onContactDelete(id)}>
+            <button
+              className={css.deleteButton}
+              type='button'
+              onClick={() => dispatch(deleteContact(id))}>
               <span className={css.deleteIcon}>
                 <BsTrash />
               </span>
             </button>
+            
           </li>
         );
       })}

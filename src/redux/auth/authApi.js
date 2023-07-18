@@ -12,7 +12,8 @@ export const createUser = createAsyncThunk('api/createUser', async (newUserCrede
     const response = await axios.post('/users/signup', newUserCredentials);
     setDefaultToken(response.data.token);
     return response.data;
-  } catch (error) {
+  }
+  catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -22,7 +23,8 @@ export const loginUser = createAsyncThunk('api/loginUser', async (userCredential
     const response = await axios.post('/users/login', userCredentials);
     setDefaultToken(response.data.token);
     return response.data;
-  } catch (error) {
+  }
+  catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });

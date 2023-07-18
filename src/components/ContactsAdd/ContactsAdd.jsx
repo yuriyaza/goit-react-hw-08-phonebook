@@ -38,6 +38,7 @@ export const ContactsAdd = () => {
       className={css.form}
       onSubmit={onFormSubmit}>
       <div className={css.inputWrapper}>
+
         <label>
           <span className={css.label}>Name</span>
           <input
@@ -74,6 +75,7 @@ export const ContactsAdd = () => {
         type='submit'>
         Add contact
       </button>
+      
     </form>
   );
 };

@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
+import { auth } from 'redux/auth/authSlice';
 import { loginUser } from 'redux/auth/authApi';
 import css from './FormLogin.module.css';
-import { auth } from 'redux/auth/authSlice';
 
 export const FormLogin = () => {
   const [email, setEmail] = useState('');
@@ -20,11 +20,6 @@ export const FormLogin = () => {
       email,
       password,
     };
-
-    // const userCredentials = {
-    //   email: 'aya01@mail.com',
-    //   password: '00000000',
-    // };
 
     dispatch(loginUser(userCredentials));
     setEmail('');
@@ -44,9 +39,8 @@ export const FormLogin = () => {
   }, [error, dispatch]);
 
   return (
-    <form
-      className={css.form}
-      onSubmit={onFormSubmit}>
+    <form className={css.form} onSubmit={onFormSubmit}>
+
       <div className={css.inputWrapper}>
         <label>
           <span className={css.label}>E-mail</span>
@@ -59,6 +53,7 @@ export const FormLogin = () => {
             value={email}
             onChange={e => setEmail(e.target.value)}></input>
         </label>
+        
         <label>
           <span className={css.label}>Password</span>
           <input
@@ -77,6 +72,7 @@ export const FormLogin = () => {
         type='submit'>
         Login
       </button>
+
     </form>
   );
 };

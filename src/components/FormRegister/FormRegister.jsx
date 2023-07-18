@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
+import { auth } from 'redux/auth/authSlice';
 import { createUser } from 'redux/auth/authApi';
 import css from './FormRegister.module.css';
-import { auth } from 'redux/auth/authSlice';
 
 export const FormRegister = () => {
-  const [user, setUser] = useState('');
+  const [name, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,9 +18,9 @@ export const FormRegister = () => {
     e.preventDefault();
 
     const newUserCredentials = {
-      name: 'aya01',
-      email: 'aya01@mail.com',
-      password: '00000000',
+      name,
+      email,
+      password,
     };
 
     dispatch(createUser(newUserCredentials));
@@ -41,21 +41,21 @@ export const FormRegister = () => {
   }, [error, dispatch]);
 
   return (
-    <form
-      className={css.form}
-      onSubmit={onFormSubmit}>
+    <form className={css.form} onSubmit={onFormSubmit}>
+      
       <div className={css.inputWrapper}>
         <label>
           <span className={css.label}>Name</span>
           <input
             className={css.input}
-            name='user'
+            name='name'
             type='text'
             maxLength={40}
             required
-            value={user}
+            value={name}
             onChange={e => setUser(e.target.value)}></input>
         </label>
+
         <label>
           <span className={css.label}>E-mail</span>
           <input
@@ -67,6 +67,7 @@ export const FormRegister = () => {
             value={email}
             onChange={e => setEmail(e.target.value)}></input>
         </label>
+
         <label>
           <span className={css.label}>Password</span>
           <input
@@ -85,6 +86,7 @@ export const FormRegister = () => {
         type='submit'>
         Register
       </button>
+
     </form>
   );
 };

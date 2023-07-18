@@ -11,4 +11,5 @@ export const Register = () => {
       <FormRegister />
       {isLoading && <Spinner />}
     </>
-  );};
+  );
+};

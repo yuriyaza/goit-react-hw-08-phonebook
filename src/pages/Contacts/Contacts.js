@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+// import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchContacts } from 'redux/phonebook/phonebookApi';

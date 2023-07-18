@@ -19,7 +19,8 @@ import css from './App.module.css';
 Notify.init({ showOnlyTheLastOne: true, clickToClose: true });
 
 export const App = () => {
-  const { token, isLoggedIn, isAuthComplete } = useSelector(state => state.auth);
+  // const { token, isLoggedIn, isAuthComplete } = useSelector(state => state.auth);
+  const { token, isLoggedIn } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
   const isFirstRender = useRef(true);

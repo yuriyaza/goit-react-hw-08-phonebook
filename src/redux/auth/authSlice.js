@@ -67,7 +67,7 @@ export const auth = createSlice({
 });
 
 const persistConfig = {
-  key: 'auth',
+  key: 'hw-phonebook-auth',
   storage: storage,
   whitelist: ['token'],
 };

@@ -19,17 +19,16 @@ import css from './App.module.css';
 Notify.init({ showOnlyTheLastOne: true, clickToClose: true });
 
 export const App = () => {
-  // const { token, isLoggedIn, isAuthComplete } = useSelector(state => state.auth);
-  const { token, isLoggedIn } = useSelector(state => state.auth);
+  const { token, isLoggedIn, isAuthComplete } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
-  const isFirstRender = useRef(true);
+  // const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+    // if (isFirstRender.current) {
+    //   isFirstRender.current = false;
+    //   return;
+    // }
 
     if (token) {
       dispatch(fetchUser(token));
@@ -40,9 +39,7 @@ export const App = () => {
 
   return (
     <>
-      {/* {isAuthComplete && ( */}
-      {true && (
-
+      {isAuthComplete && (
         <div className={css.container}>
           <header className={css.header}>
             <nav>

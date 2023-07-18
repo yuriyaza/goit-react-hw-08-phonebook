@@ -15,13 +15,13 @@ export const Contacts = () => {
   const isContactsEmpty = contacts.length === 0;
   const dispatch = useDispatch();
 
-  const isFirstRender = useRef(true);
+  // const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+    // if (isFirstRender.current) {
+    //   isFirstRender.current = false;
+    //   return;
+    // }
 
     dispatch(fetchContacts());
   }, [dispatch]);

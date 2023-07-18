@@ -7,31 +7,22 @@ export const setDefaultToken = token => {
   axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';
 };
 
-export const createUser = createAsyncThunk('api/createUser', async (newUser, thunkAPI) => {
+export const createUser = createAsyncThunk('api/createUser', async (newUserCredentials, thunkAPI) => {
   try {
-    const response = await axios.post('/users/signup', {
-      name: 'aya01',
-      email: 'aya01@mail.com',
-      password: '00000000',
-    });
+    const response = await axios.post('/users/signup', newUserCredentials);
     setDefaultToken(response.data.token);
     return response.data;
-  }
-  catch (error) {
+  } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
 
-export const loginUser = createAsyncThunk('api/loginUser', async (user, thunkAPI) => {
+export const loginUser = createAsyncThunk('api/loginUser', async (userCredentials, thunkAPI) => {
   try {
-    const response = await axios.post('/users/login', {
-      email: 'aya01@mail.com',
-      password: '00000000',
-    });
+    const response = await axios.post('/users/login', userCredentials);
     setDefaultToken(response.data.token);
     return response.data;
-  }
-  catch (error) {
+  } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });

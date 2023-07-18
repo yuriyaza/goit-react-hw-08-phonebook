@@ -11,8 +11,19 @@ export const auth = createSlice({
     email: '',
     token: undefined,
     isLoggedIn: false,
+
     isLoading: false,
+    isAuthComplete: false,
     error: null,
+  },
+
+  reducers: {
+    setIsAuthComplete(state, action) {
+      state.isAuthComplete = action.payload;
+    },
+    setError(state, action) {
+      state.error = action.payload;
+    },
   },
 
   extraReducers: builder => {
@@ -22,7 +33,6 @@ export const auth = createSlice({
         state.email = action.payload.user.email;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        state.isLoading = false;
       })
 
       .addMatcher(isAnyOf(logoutUser.fulfilled), (state, _) => {
@@ -30,24 +40,28 @@ export const auth = createSlice({
         state.email = '';
         state.token = undefined;
         state.isLoggedIn = false;
-        state.isLoading = false;
       })
 
       .addMatcher(isAnyOf(fetchUser.fulfilled), (state, action) => {
         state.user = action.payload.name;
         state.email = action.payload.email;
         state.isLoggedIn = true;
-        state.isLoading = false;
       })
 
-      .addMatcher(isAnyOf(createUser.pending, loginUser.pending, logoutUser.pending, fetchUser.fulfilled), (state, _) => {
+      .addMatcher(isAnyOf(createUser.pending, loginUser.pending, logoutUser.pending, fetchUser.pending), (state, _) => {
         state.error = null;
         state.isLoading = true;
       })
 
-      .addMatcher(isAnyOf(createUser.rejected, loginUser.rejected, logoutUser.rejected, fetchUser.fulfilled), (state, action) => {
+      .addMatcher(isAnyOf(createUser.fulfilled, loginUser.fulfilled, logoutUser.fulfilled, fetchUser.fulfilled), (state, _) => {
+        state.isLoading = false;
+        state.isAuthComplete = true;
+      })
+
+      .addMatcher(isAnyOf(createUser.rejected, loginUser.rejected, logoutUser.rejected, fetchUser.rejected), (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
+        state.isAuthComplete = true;
       });
   },
 });

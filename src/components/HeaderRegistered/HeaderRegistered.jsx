@@ -2,9 +2,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FaUserCircle } from 'react-icons/fa';
 
 import { logoutUser } from 'redux/auth/authApi';
-import css from './NavRegistered.module.css';
+import css from './HeaderRegistered.module.css';
 
-export const NavRegistered = () => {
+export const HeaderRegistered = () => {
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
 

@@ -1,23 +1,44 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Notify } from 'notiflix';
 
 import { createUser } from 'redux/auth/authApi';
-import css from './AuthRegister.module.css';
+import css from './FormRegister.module.css';
+import { auth } from 'redux/auth/authSlice';
 
-export const AuthRegister = () => {
+export const FormRegister = () => {
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const error = useSelector(state => state.auth.error);
   const dispatch = useDispatch();
 
   const onFormSubmit = e => {
     e.preventDefault();
 
-    dispatch(createUser());
+    const newUserCredentials = {
+      name: 'aya01',
+      email: 'aya01@mail.com',
+      password: '00000000',
+    };
+
+    dispatch(createUser(newUserCredentials));
     setUser('');
     setEmail('');
     setPassword('');
   };
+
+  useEffect(() => {
+    if (!error) return;
+
+    if (error === 'Request failed with status code 400') {
+      Notify.failure('Registration error. Please try other credentials.');
+    } else {
+      Notify.failure(error);
+    }
+    dispatch(auth.actions.setError(null));
+  }, [error, dispatch]);
 
   return (
     <form
@@ -61,8 +82,7 @@ export const AuthRegister = () => {
 
       <button
         className={css.button}
-        type='button'
-        onClick={onFormSubmit}>
+        type='submit'>
         Register
       </button>
     </form>

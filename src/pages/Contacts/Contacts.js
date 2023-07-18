@@ -11,11 +11,12 @@ import { Spinner } from 'components/Spinner/Spinner';
 import css from './Contacts.module.css';
 
 export const Contacts = () => {
-  const { contacts, error, isLoading } = useSelector(state => state.phoneBook);
+  const { contacts, error, isLoading, isFetchComplete } = useSelector(state => state.phoneBook);
   const isContactsEmpty = contacts.length === 0;
   const dispatch = useDispatch();
 
   const isFirstRender = useRef(true);
+
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -29,20 +30,25 @@ export const Contacts = () => {
   }, [error]);
 
   return (
-    <div className={css.wrapper}>
-      <ContactsAdd />
+    <>
+      <div className={css.wrapper}>
+        <ContactsAdd />
 
-      {isContactsEmpty ? (
-        <ContactsEmpty />
-      ) : (
-        <>
-          <h2 className={css.subtitle}>Your contacts</h2>
-          <ContactsFilter />
-          <ContactsList />
-        </>
-      )}
-
+        {isFetchComplete && (
+          <>
+            {isContactsEmpty ? (
+              <ContactsEmpty />
+            ) : (
+              <>
+                <h2 className={css.subtitle}>Your contacts</h2>
+                <ContactsFilter />
+                <ContactsList />
+              </>
+            )}
+          </>
+        )}
+      </div>
       {isLoading && <Spinner />}
-    </div>
+    </>
   );
 };

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { AuthRegister } from 'components/AuthRegister/AuthRegister';
+import { FormRegister } from 'components/FormRegister/FormRegister';
 import { Spinner } from 'components/Spinner/Spinner';
 
 export const Register = () => {
@@ -8,8 +8,7 @@ export const Register = () => {
 
   return (
     <>
-      <AuthRegister />
+      <FormRegister />
       {isLoading && <Spinner />}
     </>
-  );
-};
+  );};

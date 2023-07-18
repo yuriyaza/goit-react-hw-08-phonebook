@@ -8,6 +8,7 @@ export const phoneBook = createSlice({
     contacts: [],
     filter: '',
     isLoading: false,
+    isFetchComplete: false,
     error: null,
   },
 
@@ -22,24 +23,30 @@ export const phoneBook = createSlice({
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.contacts = action.payload;
         state.isLoading = false;
+        state.isFetchComplete = true;
       })
+
       .addCase(addContact.fulfilled, (state, action) => {
         state.contacts = [...state.contacts, action.payload];
         state.isLoading = false;
+        state.isFetchComplete = true;
       })
+
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.contacts = state.contacts.filter(contact => contact.id !== action.payload.id);
         state.isLoading = false;
+        state.isFetchComplete = true;
       })
 
       .addMatcher(isAnyOf(fetchContacts.pending, addContact.pending, deleteContact.pending), (state, _) => {
         state.error = null;
         state.isLoading = true;
       })
-      
+
       .addMatcher(isAnyOf(fetchContacts.rejected, addContact.rejected, deleteContact.rejected), (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
+        state.isFetchComplete = true;
       });
   },
 });

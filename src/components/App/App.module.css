@@ -4,23 +4,11 @@
 }
 
 .header {
-  margin-bottom: 30px;
-  border-bottom: 2px solid black;
-}
-
-.navList {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.navItem {
-  display: inline-block;
-  padding: 15px 5px;
-  font-size: 18px;
-  text-decoration: none;
-  color: #303030;
+  margin-bottom: 30px;
+  border-bottom: 2px solid black;
 }
 
 

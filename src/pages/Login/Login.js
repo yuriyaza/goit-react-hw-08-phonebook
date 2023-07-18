@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { AuthLogin } from 'components/AuthLogin/AuthLogin';
+import { FormLogin } from 'components/FormLogin/FormLogin';
 import { Spinner } from 'components/Spinner/Spinner';
 
 export const Login = () => {
@@ -8,7 +8,7 @@ export const Login = () => {
 
   return (
     <>
-      <AuthLogin />
+      <FormLogin />
       {isLoading && <Spinner />}
     </>
   );

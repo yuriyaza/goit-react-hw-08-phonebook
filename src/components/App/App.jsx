@@ -39,7 +39,9 @@ export const App = () => {
 
   return (
     <>
-      {isAuthComplete && (
+      {/* {isAuthComplete && ( */}
+      {true && (
+
         <div className={css.container}>
           <header className={css.header}>
             <nav>
@@ -50,7 +52,7 @@ export const App = () => {
 
           <main>
             <Routes>
-              {/* <Route
+              <Route
                 path='/'
                 element={
                   <RouteRules
@@ -59,11 +61,7 @@ export const App = () => {
                     onDeniedRedirect='/'
                   />
                 }
-              /> */}
-
-              <Route
-                path='/'
-                element={<Home />}></Route>
+              />
 
               <Route
                 path='/contacts'

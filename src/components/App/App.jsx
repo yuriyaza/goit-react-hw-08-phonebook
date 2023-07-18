@@ -50,7 +50,7 @@ export const App = () => {
 
           <main>
             <Routes>
-              <Route
+              {/* <Route
                 path='/'
                 element={
                   <RouteRules
@@ -59,7 +59,11 @@ export const App = () => {
                     onDeniedRedirect='/'
                   />
                 }
-              />
+              /> */}
+
+              <Route
+                path='/'
+                element={<Home />}></Route>
 
               <Route
                 path='/contacts'
@@ -93,7 +97,6 @@ export const App = () => {
                   />
                 }
               />
-              
             </Routes>
           </main>
         </div>

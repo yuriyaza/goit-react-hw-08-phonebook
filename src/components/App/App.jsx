@@ -31,17 +31,19 @@ export const App = () => {
   }, [dispatch, token]);
 
   return (
-    <>
-      {isAuthComplete && (
-        <div className={css.container}>
-          <header className={css.header}>
-            <nav>
-              <HeaderNavigation />
-            </nav>
-            {isLoggedIn ? <HeaderRegistered /> : <HeaderUnregistered />}
-          </header>
+    isAuthComplete && (
+      <>
+        <header>
+          <div className={css.container}>
+            <div className={css.appBar}>
+              <nav><HeaderNavigation /></nav>
+              {isLoggedIn ? <HeaderRegistered /> : <HeaderUnregistered />}
+            </div>
+          </div>
+        </header>
 
-          <main>
+        <main>
+          <div className={css.container}>
             <Routes>
               <Route
                 path='/'
@@ -87,9 +89,9 @@ export const App = () => {
                 }
               />
             </Routes>
-          </main>
-        </div>
-      )}
-    </>
+          </div>
+        </main>
+      </>
+    )
   );
 };

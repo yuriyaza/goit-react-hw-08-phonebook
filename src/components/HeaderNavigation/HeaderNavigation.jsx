@@ -7,16 +7,12 @@ export const HeaderNavigation = () => {
 
   return (
     <div className={css.wrapper}>
-      <NavLink
-        to='/'
-        className={css.navigation}>
+      <NavLink to='/' className={css.navigation}>
         Home
       </NavLink>
 
       {isLoggedIn && (
-        <NavLink
-          to='/contacts'
-          className={css.navigation}>
+        <NavLink to='/contacts' className={css.navigation}>
           Contacts
         </NavLink>
       )}
